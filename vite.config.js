@@ -11,7 +11,7 @@ export default defineConfig({
     server: {
     proxy: {
       '/api/users': {
-        target: 'http://localhost:5000',
+        target: 'https://backendfantcy.onrender.com',
         changeOrigin: true,
       },
     },
