@@ -8,12 +8,12 @@ export default defineConfig({
     react()
   ],
 
-    server: {
-    proxy: {
-      '/api/users': {
-        target: 'https://backendfantcy.onrender.com',
-        changeOrigin: true,
-      },
-    },
-  },
+  //   server: {
+  //   proxy: {
+  //     '/api/users': {
+  //       target: 'https://backendfantcy.onrender.com',
+  //       changeOrigin: true,
+  //     },
+  //   },
+  // },
 })

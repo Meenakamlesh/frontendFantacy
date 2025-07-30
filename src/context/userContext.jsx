@@ -12,7 +12,7 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get('/api/users/leaderBoard');
+        const res = await axios.get('https://backendfantcy.onrender.com/api/users/leaderBoard');
 
          // ✅ Safety check before setting users
         if (!Array.isArray(res.data.users)) {
@@ -32,7 +32,7 @@ export const UserProvider = ({ children }) => {
   // 👉 Function to add user
   const addUser = async (name) => {
     try {
-      const res = await axios.post('/api/users/addUser', { name });
+      const res = await axios.post("https://backendfantcy.onrender.com/api/users/addUser", { name });
       setUsers(prev => [...prev, res.data]);
     } catch (err) {
       console.error("Error adding user:", err);
@@ -43,7 +43,7 @@ export const UserProvider = ({ children }) => {
   // 👉 Function to claim points
   const claimPoints = async (userId) => {
     try {
-      const res = await axios.post('/api/users/claim', { userId });
+      const res = await axios.post('https://backendfantcy.onrender.com/api/users/claim', { userId });
       const updatedUser = res.data.user;
 
       // Update user in local state
