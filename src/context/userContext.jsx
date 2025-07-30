@@ -26,6 +26,8 @@ export const UserProvider = ({ children }) => {
         setLoading(false);
       }
     };
+    console.log("API Response:", res.data);
+
     fetchUsers();
   }, []);
 
@@ -34,6 +36,8 @@ export const UserProvider = ({ children }) => {
     try {
       const res = await axios.post("https://backendfantcy.onrender.com/api/users/addUser", { name });
       setUsers(prev => [...prev, res.data]);
+      console.log("api name response", name);
+      
     } catch (err) {
       console.error("Error adding user:", err);
       setError(err);
@@ -50,6 +54,9 @@ export const UserProvider = ({ children }) => {
       setUsers(prevUsers =>
         prevUsers.map(u => u._id === updatedUser._id ? updatedUser : u)
       );
+
+      console.log("Claim api response", userId);
+      
 
       return res.data.claimedPoints; // returning claimed points so frontend can show toast or message
     } catch (err) {
