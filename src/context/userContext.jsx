@@ -9,12 +9,11 @@ export const UserProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   // Fetch users initially
- useEffect(() => {
+useEffect(() => {
   const fetchUsers = async () => {
     try {
       const res = await axios.get('https://backendfantcy.onrender.com/api/users/leaderBoard');
-
-      console.log("API Response:", res.data); // ✅ moved inside
+      console.log("API Response:", res.data); // ✅ move this line here
 
       if (!Array.isArray(res.data.users)) {
         throw new Error("Invalid data format from API");
@@ -27,8 +26,10 @@ export const UserProvider = ({ children }) => {
       setLoading(false);
     }
   };
+
   fetchUsers();
 }, []);
+
 
 
   // 👉 Function to add user
