@@ -13,7 +13,13 @@ export const UserProvider = ({ children }) => {
     const fetchUsers = async () => {
       try {
         const res = await axios.get('/api/users/leaderBoard');
-        setUsers(res.data);
+
+         // ✅ Safety check before setting users
+        if (!Array.isArray(res.data.users)) {
+        throw new Error("Invalid data format from API");
+      }
+
+        setUsers(res.data.users);
       } catch (err) {
         setError(err);
       } finally {
